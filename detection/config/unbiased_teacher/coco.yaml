@@ -1,0 +1,57 @@
+_base: "./base.yaml"
+
+log:
+  comment: "coco"
+
+data:
+  train_l:
+    dataset: "COCO"
+    prefetch: False
+    infinity_sampler: True
+    grouped_sampler: True
+    cache: "./cache/coco17_train01_1.dict"
+    num_workers: 4
+    batch_size: 2
+    shuffle: True
+    img_transforms:
+    batch_transforms:
+      batch_apply:
+        random_horizontal_flip:
+        resize:
+          - [640, 672, 704, 736, 768, 800]
+          - 1333
+  train_u:
+    dataset: "COCO"
+    prefetch: False
+    infinity_sampler: True
+    grouped_sampler: True
+    cache: "./cache/coco17_train99_1.dict"
+    num_workers: 4
+    batch_size: 2
+    shuffle: True
+    img_transforms:
+    batch_transforms:
+      batch_apply:
+        random_horizontal_flip:
+        resize:
+          - [640, 672, 704, 736, 768, 800]
+          - 1333
+  test:
+    dataset: "COCO"
+    prefetch: False
+    infinity_sampler: False
+    grouped_sampler: False
+    cache: "./cache/coco17_val.dict"
+    json_file: "./data/COCO2017/annotations/instances_val2017.json"
+    num_workers: 4
+    batch_size: 1
+    shuffle: False
+    img_transforms:
+    batch_transforms:
+      batch_apply:
+        resize:
+          - 800
+          - 1333
+        normalize:
+      batch_pad:
+

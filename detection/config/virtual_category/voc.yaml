@@ -1,0 +1,78 @@
+_base: "./base.yaml"
+
+log:
+  comment: "voc"
+
+evaluator: "voc"
+
+data:
+  train_l:
+    dataset: "VOC"
+    prefetch: False
+    infinity_sampler: True
+    grouped_sampler: True
+    cache: "./cache/voc07_trainval.dict"
+    num_workers: 4
+    batch_size: 4
+    shuffle: True
+    img_transforms:
+    batch_transforms:
+      batch_apply:
+        random_horizontal_flip:
+        resize:
+          - [400, 1200]
+          - 1333
+          - "range"
+  train_u:
+    dataset: "VOC"
+    prefetch: False
+    infinity_sampler: True
+    grouped_sampler: True
+    cache: "./cache/voc12_trainval.dict"
+    num_workers: 4
+    batch_size: 4
+    shuffle: True
+    img_transforms:
+    batch_transforms:
+      batch_apply:
+        random_horizontal_flip:
+        resize:
+          - [400, 1200]
+          - 1333
+          - "range"
+  test:
+    dataset: "VOC"
+    prefetch: False
+    infinity_sampler: False
+    grouped_sampler: False
+    cache: "./cache/voc07_test.dict"
+    json_file: "./cache/voc07_test_cocostyle.json"
+    num_workers: 4
+    batch_size: 1
+    shuffle: False
+    img_transforms:
+    batch_transforms:
+      batch_apply:
+        resize:
+          - 600
+          - 1000
+        normalize:
+      batch_pad:
+model:
+  roihead:
+    num_classes: 20
+
+solver:
+  burnin_iter_num: 100000
+  iter_num: 180000
+  ckp_interval: 5000
+  lr: 0.01
+  weight_decay: 0.0001
+  momentum: 0.9
+  lr_steps: [179990, 179995]
+  lr_gamma: 0.1
+  warmup: True
+  warmup_gamma: 0.001
+  warmup_steps: 1000
+  ema_momentum: 0.999
+  u_loss_weight: 2

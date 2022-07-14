@@ -1,0 +1,68 @@
+dev_mode: False
+seed: 669
+operator: "unbiased_teacher"
+evaluator: "coco"
+
+log:
+  prefix: "unbiased_teacher"
+  comment:
+  log_dir: "./log/"
+  summary_interval: 20
+  wandb: "UBT"
+  aim:
+
+data:
+  weak_transforms:
+    batch_apply:
+      normalize:
+    batch_pad:
+  strong_transforms:
+    batch_apply:
+      random_color_jitter:
+      random_grayscale:
+      random_gaussian_blur:
+      normalize:
+      repeat:
+        random_erase:
+          - [[0.05, 0.2], [0.3, 3.3], 0.7]
+          - [[0.02, 0.2], [0.1, 6.0], 0.5]
+          - [[0.02, 0.2], [0.05, 8.0], 0.3]
+    batch_pad:
+
+model:
+  pretrained:
+  teacher:
+    score_threshold: 0.7
+  backbone:
+    name: "resnet50"
+    pretrained: True
+    trainable_layers: 3
+  rpn:
+    pre_nms_topk_train: 2000
+    post_nms_topk_train: 1000
+    pre_nms_topk_test: 1000
+    post_nms_topk_test: 1000
+    nms_threshold: 0.7
+  roihead:
+    num_classes: 80
+  score_threshold: 0.05
+  nms_threshold: 0.5
+  max_detections: 100
+
+solver:
+  burnin_iter_num: 2000
+  iter_num: 180000
+  ckp_interval: 500
+  lr: 0.01
+  weight_decay: 0.0001
+  momentum: 0.9
+  lr_steps: [179990, 179995]
+  lr_gamma: 0.1
+  warmup: True
+  warmup_gamma: 0.001
+  warmup_steps: 1000
+  ema_momentum: 0.9996
+  u_loss_weight: 4
+
+distributed:
+  use: False
