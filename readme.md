@@ -3,8 +3,8 @@
 This is the code for the virtual category learning.
 
 - [x] Detection: Semi-supervised Object Detection via Virtual Category Learning   
-- [] Classification: working on it   
-- [] Segmentation: working on it
+- [ ] Classification: working on it   
+- [ ] Segmentation: working on it
 
 ## Install
 
