@@ -2,7 +2,7 @@
 
 This is the code for the virtual category learning.
 
-- [x] Detection: Semi-supervised Object Detection via Virtual Category Learning   
+- [x] Detection: Semi-supervised Object Detection via Virtual Category Learning (ECCV 2022)   
 - [ ] Classification: working on it   
 - [ ] Segmentation: working on it
 
