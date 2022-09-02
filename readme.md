@@ -11,5 +11,5 @@ This is the code for the virtual category learning.
 pytorch 1.11, torchvision 0.12, python 3.8, cuda 11.3
 
 ```bash
-python setup.py install
+python setup.py develop
 ```
