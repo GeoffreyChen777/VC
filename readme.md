@@ -3,13 +3,16 @@
 This is the code for the virtual category learning.
 
 - [x] Detection: Semi-supervised Object Detection via Virtual Category Learning (ECCV 2022)   
-- [ ] Classification: working on it   
-- [ ] Segmentation: working on it
+- [x] Segmentation: Virtual Category Learning: A Semi-Supervised Learning Method for Dense Prediction with Extremely Limited Labels (TPAMI under review)
 
-## Install
 
-pytorch 1.11, torchvision 0.12, python 3.8, cuda 11.3
+## Citation
 
-```bash
-python setup.py develop
+```bibtex
+@inproceedings{chen2022ssodvc,
+    year = 2022,
+    title = {Semi-supervised Object Detection via Virtual Category Learning.},
+    author = {Changrui Chen and Kurt Debattista and Jungong Han},
+    booktitle = {European Conference on Computer Vision (ECCV)}
+}
 ```

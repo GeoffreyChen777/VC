@@ -1,10 +1,14 @@
-# Virtual Category Learning
+# Semi-supervised Object Detection via Virtual Category Learning (ECCV 2022)   
 
-This is the code for the virtual category learning.
+## Install
 
-## Detection
+pytorch 1.11, torchvision 0.12, python 3.8, cuda 11.3
 
-### Prepare Data
+```bash
+python setup.py develop
+```
+
+## Prepare Data
 
 Download data and cache: [OneDrive](https://1drv.ms/u/s!As5AmExWpCHXgdI2u7uNIZaFkKBGIA?e=pmFmXY)
 
@@ -20,18 +24,18 @@ Download data and cache: [OneDrive](https://1drv.ms/u/s!As5AmExWpCHXgdI2u7uNIZaF
 ```
 
 
-### Train
+## Train
 ```bash
 python run.py train --num_gpus 8 --config ./config/virtual_category/coco.yaml
 ```
 
-### Test
+## Test
 
 ```bash
 python run.py test --num_gpus 8 --config ./config/virtual_category/coco.yaml --resume ./log/vc/01/final.pth
 ```
 
-### Citation
+## Citation
 
 ```bibtex
 @inproceedings{chen2022ssodvc,

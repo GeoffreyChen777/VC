@@ -1,0 +1,67 @@
+_base: "./base.yaml"
+
+log:
+  comment: "voc"
+
+data:
+  train_l:
+    dataset: "VOC"
+    subset: "l.1.128.fold1"
+    prefetch: False
+    infinity_sampler: True
+    root: "./data/VOCSegAug"
+    num_workers: 4
+    batch_size: 4
+    shuffle: True
+    img_transforms:
+    batch_transforms:
+      batch_apply:
+        resize:
+          scale: [0.5, 0.75, 1, 1.5, 1.75, 2.0]
+        random_crop:
+          - [512, 512]
+        random_horizontal_flip:
+  train_u:
+    dataset: "VOC"
+    subset: "u.1.128.fold1"
+    prefetch: False
+    infinity_sampler: True
+    root: "./data/VOCSegAug"
+    num_workers: 4
+    batch_size: 4
+    shuffle: True
+    img_transforms:
+    batch_transforms:
+      batch_apply:
+        resize:
+          scale: [0.5, 0.75, 1, 1.5, 1.75, 2.0]
+        random_crop:
+          - [512, 512]
+        random_horizontal_flip:
+  test:
+    dataset: "VOC"
+    subset: "val"
+    prefetch: False
+    infinity_sampler: False
+    root: "./data/VOCSegAug"
+    num_workers: 1
+    batch_size: 1
+    shuffle: False
+    img_transforms:
+    batch_transforms:
+      batch_apply:
+        resize:
+          min_size: [512, 512]
+          max_size: 2048
+          mode: "choice"
+          process_label: False
+        normalize:
+          - [0.485, 0.456, 0.406]
+          - [0.229, 0.224, 0.225]
+          - True
+          - False
+      batch_pad:
+        stride: 1
+
+model:
+  num_classes: 21

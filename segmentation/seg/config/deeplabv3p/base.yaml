@@ -1,0 +1,51 @@
+dev_mode: False
+seed: 669
+operator: "deeplabv3p"
+evaluator: "segmentation"
+
+log:
+  prefix: "deeplabv3p"
+  comment: "full"
+  log_dir: "./log/"
+  summary_interval: 20
+  wandb: "SEG"
+  aim:
+
+model:
+  backbone:
+    type: "resnet"
+    depth: 50
+    strides: [1, 2, 1, 1]
+    dilations: [1, 1, 2, 4]
+    contract_dilation: True
+    deep_stem: True
+    norm_layer: "SyncBN"
+    pretrained: "./cache/resnet50c.pth"
+  aspp:
+    in_channels: 2048
+    inner_channels: 512
+    lowlevel_in_channels: 256
+    lowlevel_inner_channels: 48
+    dilations: [1, 6, 12, 18]
+    norm_layer: "SyncBN"
+  dropout: 0
+
+solver:
+  iter_num: 40000
+  ckp_interval: 5000
+  eval_interval: 1000
+  optimizer:
+    type: "sgd"
+    lr: 0.001
+    weight_decay: 0.0001
+    weight_decay_norm: 0
+    weight_decay_bias: 0
+    momentum: 0.9
+  lr_scheduler:
+    type: "poly"
+    iter_num: 40000
+    power: 0.9
+    min_lr: 0.0001
+    warmup: True
+    warmup_step: 500
+    warmup_gamma: 0.001
