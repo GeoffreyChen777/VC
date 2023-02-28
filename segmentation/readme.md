@@ -10,7 +10,7 @@ python setup.py develop
 
 ## Prepare Data
 
-Download data seed and cache: [link](https://1drv.ms/u/s!As5AmExWpCHXgfluc3OqaejrSYZN8w?e=kLjBiY)
+Download data seed and pretrained resnet: [link](https://1drv.ms/u/s!As5AmExWpCHXgfluc3OqaejrSYZN8w?e=kLjBiY)
 
 ```
 |-- ...
