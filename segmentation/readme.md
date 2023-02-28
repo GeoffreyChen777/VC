@@ -10,7 +10,7 @@ python setup.py develop
 
 ## Prepare Data
 
-Download data and cache: (comming soon)
+Download data seed and cache: [link](https://1drv.ms/u/s!As5AmExWpCHXgfluc3OqaejrSYZN8w?e=kLjBiY)
 
 ```
 |-- ...
@@ -26,5 +26,5 @@ Download data and cache: (comming soon)
 
 ## Train
 ```bash
-gvrun run.py train --config ./config/vc_deeplabv3p/voc_aug.yaml --num-gpus=4
+torchrun --nproc_per_node=4 run.py train --config ./config/vc_deeplabv3p/voc_aug.yaml --num-gpus=4
 ```
