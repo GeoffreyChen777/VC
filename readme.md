@@ -3,7 +3,7 @@
 This is the code for the virtual category learning.
 
 - [x] Detection: Semi-supervised Object Detection via Virtual Category Learning (ECCV 2022)   
-- [x] Segmentation: Virtual Category Learning: A Semi-Supervised Learning Method for Dense Prediction with Extremely Limited Labels (TPAMI under review)
+- [x] Segmentation: Virtual Category Learning: A Semi-Supervised Learning Method for Dense Prediction with Extremely Limited Labels (T-PAMI)
 
 
 ## Citation
